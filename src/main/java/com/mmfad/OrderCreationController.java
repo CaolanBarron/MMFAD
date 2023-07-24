@@ -11,7 +11,6 @@ import java.io.IOException;
 public class OrderCreationController {
 
     public void CreateNewOrder() {
-        System.out.println(Order.getInstance().getItemsInOrder());
     }
     public void SwitchToOrderScreen(ActionEvent event) throws IOException {
         CreateNewOrder();

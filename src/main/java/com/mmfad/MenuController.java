@@ -73,12 +73,14 @@ public class MenuController implements Initializable {
 
     List<SellableButton> foodItemButtons = new ArrayList<>();
     List<SellableButton> drinkItemButtons = new ArrayList<>();
-    List<Sellable> currentlySelectedItems = new ArrayList<>();
 
     // Populate both the drinks pane and the food pane with buttons
     // depending on predetermined arrays
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        RefreshCurrentlySelectedItemsView();
+
         for (Sellable drink :
                 drinks) {
             drinkItemButtons.add(new SellableButton(drink));
@@ -125,8 +127,7 @@ public class MenuController implements Initializable {
     public void RefreshCurrentlySelectedItemsView(){
         selectedItemsListView.getItems().clear();
         for (Sellable item:
-             currentlySelectedItems) {
-            //selectedItemsListView.getItems().add(item.name + "\n" + item.price);
+             Order.getInstance().itemsInOrder) {
             selectedItemsListView.getItems().add(item);
         }
         CalculateOrderPrice();
@@ -134,24 +135,23 @@ public class MenuController implements Initializable {
     public void CalculateOrderPrice(){
         BigDecimal total = new BigDecimal("0.00");
         for (Sellable item:
-             currentlySelectedItems) {
+             Order.getInstance().itemsInOrder) {
             total = total.add(item.price);
         }
-        System.out.println(total);
         orderTotalPrice.setText(total.toString());
     }
     EventHandler addToListEvent = new EventHandler() {
         @Override
         public void handle(Event event) {
             SellableButton source = (SellableButton) event.getSource();
-            currentlySelectedItems.add(source.getSellableItem());
+            Order.getInstance().addItemToOrder(source.getSellableItem());
             RefreshCurrentlySelectedItemsView();
         }
     };
 
     public void DeleteFromOrder(){
         Sellable item = (Sellable) selectedItemsListView.getSelectionModel().getSelectedItem();
-        currentlySelectedItems.remove(item);
+        Order.getInstance().removeItemFromOrder(item);
         RefreshCurrentlySelectedItemsView();
     }
 
