@@ -12,7 +12,7 @@
    <children>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="720.0" prefWidth="240.0">
          <children>
-            <ListView fx:id="selectedItemsListView" layoutX="2.0" prefHeight="542.0" prefWidth="240.0" style="-fx-font-size: 30;" />
+            <ListView fx:id="selectedItemsListView" layoutX="2.0" prefHeight="542.0" prefWidth="240.0" />
             <Label alignment="CENTER" layoutY="542.0" prefHeight="26.0" prefWidth="240.0" text="Total" />
             <Label fx:id="orderTotalPrice" alignment="CENTER" layoutX="2.0" layoutY="568.0" prefHeight="26.0" prefWidth="240.0" text="0.0" />
             <Button fx:id="deleteItemButton" layoutX="11.0" layoutY="594.0" mnemonicParsing="false" onAction="#DeleteFromOrder" prefHeight="51.0" prefWidth="218.0" text="Delete Item" />

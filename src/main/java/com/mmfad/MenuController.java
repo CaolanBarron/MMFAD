@@ -106,19 +106,7 @@ public class MenuController implements Initializable {
              drinkItemButtons) {
             button.setOnAction(addToListEvent);
         }
-
-        selectedItemsListView.setCellFactory(param -> new ListCell<Sellable>() {
-            @Override
-            protected void updateItem(Sellable item, boolean empty) {
-                super.updateItem(item, empty);
-
-                if(empty || item == null || item.name == null || item.price == null) {
-                    setText(null);
-                } else {
-                    setText(item.name + "\n" + item.price);
-                }
-            }
-        });
+        Helper.setCellFactoryListView(selectedItemsListView);
     }
 
     @FXML
@@ -140,13 +128,10 @@ public class MenuController implements Initializable {
         }
         orderTotalPrice.setText(total.toString());
     }
-    EventHandler addToListEvent = new EventHandler() {
-        @Override
-        public void handle(Event event) {
-            SellableButton source = (SellableButton) event.getSource();
-            Order.getInstance().addItemToOrder(source.getSellableItem());
-            RefreshCurrentlySelectedItemsView();
-        }
+    EventHandler addToListEvent = event -> {
+        SellableButton source = (SellableButton) event.getSource();
+        Order.getInstance().addItemToOrder(source.getSellableItem());
+        RefreshCurrentlySelectedItemsView();
     };
 
     public void DeleteFromOrder(){

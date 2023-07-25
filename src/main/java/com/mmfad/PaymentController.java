@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
@@ -24,6 +25,10 @@ public class PaymentController implements Initializable {
     Label orderTotalPrice;
     @FXML
     Label paymentTotalLabel;
+    @FXML
+    ListView cashTenderedListView;
+    @FXML
+    Button deleteCashButton;
 
     public void SwitchToMenuScene(ActionEvent event) throws IOException {
         Node node = (Node) event.getSource();
@@ -36,6 +41,7 @@ public class PaymentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RefreshCurrentlySelectedItemsView();
+        Helper.setCellFactoryListView(selectedItemsListView);
     }
 
     public void RefreshCurrentlySelectedItemsView(){
@@ -61,14 +67,28 @@ public class PaymentController implements Initializable {
         paymentTotalLabel.setText(paymentTotalLabel.getText() + button.getText());
     }
 
-    BigDecimal totalTendered = new BigDecimal(0.00);
+    BigDecimal totalTendered;
 
     public void TenderCash() {
-        totalTendered = totalTendered.add(new BigDecimal(paymentTotalLabel.getText()));
+        cashTenderedListView.getItems().add(new BigDecimal(paymentTotalLabel.getText()));
+        UpdateTotalTendered();
         System.out.println(totalTendered);
         BackspaceText();
     }
+    private void UpdateTotalTendered() {
+        totalTendered = new BigDecimal(0.00);
+        for (Object object:
+                cashTenderedListView.getItems()) {
+            BigDecimal tender = (BigDecimal) object;
+            totalTendered = totalTendered.add(tender);
+        }
+    }
 
+    public void DeleteTenderedCash() {
+        cashTenderedListView.getItems().remove(cashTenderedListView.getSelectionModel().getSelectedItem());
+        UpdateTotalTendered();
+        System.out.println(totalTendered);
+    }
     public void BackspaceText(){
         paymentTotalLabel.setText("");
     }
@@ -82,7 +102,7 @@ public class PaymentController implements Initializable {
 
 
 
-        Order.getInstance().DestroyInstance();
+        Order.DestroyInstance();
         Node node = (Node) event.getSource();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("OrderCreationScene.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
