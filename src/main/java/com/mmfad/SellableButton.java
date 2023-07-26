@@ -7,6 +7,7 @@ public class SellableButton extends Button {
     public SellableButton(Sellable item) {
         super(item.name);
         this.item = item;
+        this.setStyle("-fx-min-height: 100; -fx-min-width: 200");
     }
 
     public Sellable getSellableItem() {

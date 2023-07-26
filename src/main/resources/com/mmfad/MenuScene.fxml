@@ -8,36 +8,38 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mmfad.MenuController">
-   <children>
+<AnchorPane fx:id="parentPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mmfad.MenuController">
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="720.0" prefWidth="240.0">
-         <children>
-            <ListView fx:id="selectedItemsListView" layoutX="2.0" prefHeight="542.0" prefWidth="240.0" />
-            <Label alignment="CENTER" layoutY="542.0" prefHeight="26.0" prefWidth="240.0" text="Total" />
-            <Label fx:id="orderTotalPrice" alignment="CENTER" layoutX="2.0" layoutY="568.0" prefHeight="26.0" prefWidth="240.0" text="0.0" />
-            <Button fx:id="deleteItemButton" layoutX="11.0" layoutY="594.0" mnemonicParsing="false" onAction="#DeleteFromOrder" prefHeight="51.0" prefWidth="218.0" text="Delete Item" />
-            <Button fx:id="payButton" alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="655.0" mnemonicParsing="false" onAction="#SwitchToPaymentScene" prefHeight="51.0" prefWidth="218.0" text="Pay" />
-         </children>
-      </AnchorPane>
+        <ListView fx:id="selectedItemsListView" layoutX="2.0" prefHeight="542.0" prefWidth="240.0"/>
+        <Label alignment="CENTER" layoutY="542.0" prefHeight="26.0" prefWidth="240.0" text="Total"/>
+        <Label fx:id="orderTotalPrice" alignment="CENTER" layoutX="2.0" layoutY="568.0" prefHeight="26.0"
+               prefWidth="240.0" text="0.0"/>
+        <Button layoutX="11.0" layoutY="594.0" mnemonicParsing="false"
+                onAction="#DeleteFromOrder" prefHeight="51.0" prefWidth="218.0" text="Delete Item"/>
+        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="655.0"
+                mnemonicParsing="false" onAction="#SwitchToPaymentScene" prefHeight="51.0" prefWidth="99.0"
+                text="Pay"/>
+        <Button layoutX="14.0" layoutY="655.0" mnemonicParsing="false" onAction="#CancelOrder" prefHeight="51.0"
+                prefWidth="99.0" text="Cancel"/>
+    </AnchorPane>
     <AnchorPane layoutX="243.0" minHeight="0.0" minWidth="0.0" prefHeight="720.0" prefWidth="1040.0">
-         <children>
-            <ToolBar layoutX="1.0" layoutY="-3.0" prefHeight="103.0" prefWidth="1040.0">
-              <items>
-                <Button fx:id="drinksButton" mnemonicParsing="false" onAction="#SwitchToDrinksPane" prefHeight="70.0" prefWidth="141.0" text="Drinks">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="foodButton" mnemonicParsing="false" onAction="#SwitchToFoodPane" prefHeight="70.0" prefWidth="131.0" text="Food">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-              </items>
-            </ToolBar>
-            <FlowPane fx:id="foodPane" disable="true" layoutX="1.0" layoutY="102.0" prefHeight="616.0" prefWidth="1040.0" visible="false" />
-            <FlowPane fx:id="drinksPane" layoutX="3.0" layoutY="102.0" prefHeight="616.0" prefWidth="1040.0" />
-         </children>
-      </AnchorPane>
-   </children>
+        <ToolBar layoutX="1.0" layoutY="-3.0" prefHeight="103.0" prefWidth="1040.0">
+            <Button fx:id="drinksButton" mnemonicParsing="false" onAction="#SwitchToDrinksPane"
+                    prefHeight="70.0" prefWidth="141.0" text="Drinks">
+                <font>
+                    <Font size="24.0"/>
+                </font>
+            </Button>
+            <Button fx:id="foodButton" mnemonicParsing="false" onAction="#SwitchToFoodPane" prefHeight="70.0"
+                    prefWidth="131.0" text="Food">
+                <font>
+                    <Font size="24.0"/>
+                </font>
+            </Button>
+        </ToolBar>
+        <FlowPane fx:id="foodPane" disable="true" layoutX="1.0" layoutY="102.0" prefHeight="616.0"
+                  prefWidth="1040.0" visible="false"/>
+        <FlowPane fx:id="drinksPane" layoutX="3.0" layoutY="102.0" prefHeight="616.0" prefWidth="1040.0"/>
+    </AnchorPane>
 </AnchorPane>

@@ -6,10 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,17 +15,22 @@ import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PaymentController implements Initializable {
-
+public class PaymentController extends OrderScene implements Initializable {
     @FXML
-    ListView selectedItemsListView;
+    AnchorPane parentPane;
     @FXML
-    Label orderTotalPrice;
+    ListView<Sellable> selectedItemsListView;
     @FXML
-    Label paymentTotalLabel;
+    ListView<BigDecimal> cashTenderedListView;
     @FXML
-    ListView cashTenderedListView;
+    Label orderTotalLabel;
     @FXML
+    Label totalTenderedLabel;
+    @FXML
+    Label paymentDueLabel;
+    @FXML
+    Label customPaymentLabel;
+   @FXML
     Button deleteCashButton;
 
     public void SwitchToMenuScene(ActionEvent event) throws IOException {
@@ -42,6 +45,8 @@ public class PaymentController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RefreshCurrentlySelectedItemsView();
         Helper.setCellFactoryListView(selectedItemsListView);
+
+        UpdatePaymentLabels();
     }
 
     public void RefreshCurrentlySelectedItemsView(){
@@ -50,63 +55,114 @@ public class PaymentController implements Initializable {
                 Order.getInstance().itemsInOrder) {
             selectedItemsListView.getItems().add(item);
         }
-        CalculateOrderPrice();
+        Order.getInstance().UpdateOrderPrice();
     }
-    public void CalculateOrderPrice(){
-        BigDecimal total = new BigDecimal("0.00");
-        for (Sellable item:
-                Order.getInstance().itemsInOrder) {
-            total = total.add(item.price);
+
+
+    private void UpdatePaymentLabels() {
+        orderTotalLabel.setText(Order.getInstance().getTotalPrice().toString());
+        totalTenderedLabel.setText(totalTendered.toString());
+        paymentDueLabel.setText(GetTotalDue().toString());
+    }
+
+    // TOTAL TENDERED LIST AND CONTROLS
+    BigDecimal totalTendered = new BigDecimal("0.00");
+    private void AddTenderedMoneyToListView(BigDecimal input) {
+        cashTenderedListView.getItems().add(input);
+    }
+
+    public void RemoveTenderedMoneyFromListView() {
+        cashTenderedListView.getItems().remove(cashTenderedListView.getSelectionModel().getSelectedItem());
+    }
+
+    private void UpdateTotalTenderedFromListView() {
+        // update the totalTendered Variable using the list of tendered payments
+        totalTendered = new BigDecimal("0.00");
+        for (BigDecimal item:
+             cashTenderedListView.getItems()) {
+            totalTendered = totalTendered.add(item);
         }
-        System.out.println(total);
-        orderTotalPrice.setText(total.toString());
     }
 
-    public void PaymentInput(ActionEvent event) {
-        Button button = (Button)event.getSource();
-        paymentTotalLabel.setText(paymentTotalLabel.getText() + button.getText());
+    private BigDecimal GetTotalDue() {
+        return Order.getInstance().getTotalPrice().subtract(totalTendered);
     }
 
-    BigDecimal totalTendered;
 
-    public void TenderCash() {
-        cashTenderedListView.getItems().add(new BigDecimal(paymentTotalLabel.getText()));
-        UpdateTotalTendered();
-        System.out.println(totalTendered);
+
+    // PAYMENT METHODS
+    public void TenderCash(BigDecimal input) {
+        System.out.println("PreInput");
+        System.out.println("Total order price: " + Order.getInstance().getTotalPrice() );
+        System.out.println("Total tendered: " + totalTendered);
+        System.out.println("Total due: " + GetTotalDue());
+        // add payment to list of cash tendered
+        AddTenderedMoneyToListView(input);
+        // update totalTendered using list of cash tendered
+        UpdateTotalTenderedFromListView();
+        // update labels displaying how much is paid/due
+        UpdatePaymentLabels();
+        // Check if totalDue is less than or equal to zero
+        if (GetTotalDue().compareTo(new BigDecimal("0.00")) > 0) {
+            // If totalDue is over zero do nothing
+            System.out.println("Not paid in total");
+        } else {
+            // else display the change required and then endOrder
+            System.out.println("Order paid in full. Change required: " + GetTotalDue());
+            ChangeRequiredPopup();
+//            FinishOrder();
+        }
+
+        System.out.println("PostInput");
+        System.out.println("Total order price: " + Order.getInstance().getTotalPrice() );
+        System.out.println("Total tendered: " + totalTendered);
+        System.out.println("Total due: " + GetTotalDue());
+
+    }
+    public void CustomPayment() {
+        // Take the input using the label from the scene
+        if(customPaymentLabel.getText().length() > 0) {
+            BigDecimal cashValue = new BigDecimal(customPaymentLabel.getText());
+            // Pass this value into TenderCash()
+            TenderCash(cashValue);
+        }
+        // Reset the input in the scene
         BackspaceText();
     }
-    private void UpdateTotalTendered() {
-        totalTendered = new BigDecimal(0.00);
-        for (Object object:
-                cashTenderedListView.getItems()) {
-            BigDecimal tender = (BigDecimal) object;
-            totalTendered = totalTendered.add(tender);
-        }
+    public void ExactPayment() {
+        // Call tender cash with the total due
+        TenderCash(GetTotalDue());
+    }
+    public void CardPayment() {
+        // IDK how to handle card stuff now il just write it as if the payment went through.
+        TenderCash(GetTotalDue());
     }
 
-    public void DeleteTenderedCash() {
-        cashTenderedListView.getItems().remove(cashTenderedListView.getSelectionModel().getSelectedItem());
-        UpdateTotalTendered();
-        System.out.println(totalTendered);
+    // KEYBOARD CONTROLLER
+    public void KeyboardInput(ActionEvent event) {
+        Button button = (Button)event.getSource();
+        customPaymentLabel.setText(customPaymentLabel.getText() + button.getText());
     }
     public void BackspaceText(){
-        paymentTotalLabel.setText("");
+        customPaymentLabel.setText("");
     }
 
-    public void CardPayment() {
-        
+    private void ChangeRequiredPopup() {
+        Alert changeDueAlert = new Alert(Alert.AlertType.NONE,"Change due: " + GetTotalDue(), ButtonType.OK);
+        changeDueAlert.setOnCloseRequest(dialogEvent -> FinishOrder());
+        changeDueAlert.getDialogPane().setStyle("-fx-font-size: 24; -fx-border-width: 4; -fx-border-color: black");
+        changeDueAlert.show();
     }
 
 
-    public void FinishOrder(ActionEvent event) throws IOException {
 
-
-
-        Order.DestroyInstance();
-        Node node = (Node) event.getSource();
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("OrderCreationScene.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.setScene(scene);
+    private void FinishOrder() {
+        Order.getInstance().DebugPrintReceipt();
+        Order.getInstance().DebugPrintTickets();
+        try {
+            EndOrder((Stage) parentPane.getScene().getWindow());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

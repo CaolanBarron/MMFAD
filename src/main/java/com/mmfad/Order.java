@@ -1,18 +1,30 @@
 package com.mmfad;
 
-import javafx.scene.control.ListView;
-
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-        private static Order orderInstance = null;
-
-
+    private static Order orderInstance = null;
 
     List<Sellable> itemsInOrder;
+    BigDecimal totalPrice;
+
     private Order() {
         itemsInOrder = new ArrayList<>();
+        totalPrice = new BigDecimal("0.00");
+    }
+
+    public void UpdateOrderPrice() {
+        totalPrice = new BigDecimal("0.00");
+        for (Sellable item:
+             itemsInOrder) {
+            totalPrice = totalPrice.add(item.price);
+        }
+    }
+
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
     }
 
     public static synchronized Order getInstance() {
@@ -25,13 +37,6 @@ public class Order {
         orderInstance = null;
     }
 
-    public List<Sellable> getItemsInOrder() {
-        return itemsInOrder;
-    }
-    public void setItemsInOrder(List<Sellable> itemsInOrder) {
-        this.itemsInOrder = itemsInOrder;
-    }
-
 
     public void addItemToOrder(Sellable item) {
         itemsInOrder.add(item);
@@ -39,5 +44,29 @@ public class Order {
 
     public void removeItemFromOrder(Sellable item) {
         itemsInOrder.remove(item);
+    }
+
+    public void DebugPrintReceipt() {
+        System.out.println("------------------");
+        System.out.println("Receipt for order");
+        for (Sellable item:
+             itemsInOrder) {
+            System.out.println(item.name + "\t" + item.price);
+            System.out.println();
+        }
+        System.out.println("Total price: " + orderInstance.getTotalPrice());
+        System.out.println("------------------");
+    }
+
+    public void DebugPrintTickets() {
+        System.out.println("------------------");
+        System.out.println("Tickets for order");
+        for (Sellable item:
+                itemsInOrder) {
+            System.out.println("------------------");
+            System.out.println(item.name + "\n" + item.price);
+        }
+        System.out.println("------------------");
+
     }
 }

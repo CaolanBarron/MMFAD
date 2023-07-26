@@ -1,7 +1,6 @@
 package com.mmfad;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,8 +9,8 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
@@ -22,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class MenuController implements Initializable {
+public class MenuController extends OrderScene implements Initializable {
     //Arrays of generic test data to use
     Drink[] drinks = {
             new Drink("Americano", 4.55f),
@@ -44,6 +43,8 @@ public class MenuController implements Initializable {
 
     };
 
+    @FXML
+    AnchorPane parentPane;
     @FXML
     Button foodButton;
     @FXML
@@ -110,7 +111,7 @@ public class MenuController implements Initializable {
     }
 
     @FXML
-    ListView selectedItemsListView;
+    ListView<Sellable> selectedItemsListView;
 
     public void RefreshCurrentlySelectedItemsView(){
         selectedItemsListView.getItems().clear();
@@ -128,14 +129,14 @@ public class MenuController implements Initializable {
         }
         orderTotalPrice.setText(total.toString());
     }
-    EventHandler addToListEvent = event -> {
+    EventHandler<ActionEvent> addToListEvent = event -> {
         SellableButton source = (SellableButton) event.getSource();
         Order.getInstance().addItemToOrder(source.getSellableItem());
         RefreshCurrentlySelectedItemsView();
     };
 
     public void DeleteFromOrder(){
-        Sellable item = (Sellable) selectedItemsListView.getSelectionModel().getSelectedItem();
+        Sellable item = selectedItemsListView.getSelectionModel().getSelectedItem();
         Order.getInstance().removeItemFromOrder(item);
         RefreshCurrentlySelectedItemsView();
     }
@@ -148,4 +149,14 @@ public class MenuController implements Initializable {
         Stage stage = (Stage) node.getScene().getWindow();
         stage.setScene(scene);
     }
+
+    public void CancelOrder() {
+        try {
+            EndOrder((Stage)parentPane.getScene().getWindow());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }
