@@ -12,4 +12,4 @@ or similar environment to take a customers order and ensure proper payment is re
 - Order price tracker
 - Built in payment system
 ---
-![Screenshot](/home/caolan/Programming/Java/MMFAD/images/MVP1Screenshot.png)
+![Screenshot](images/MVP1Screenshot.png)
