@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<fx:root type="AnchorPane" prefHeight="87.0" prefWidth="221.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <Label layoutX="24.0" layoutY="14.0" text="Detail">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <RadioButton layoutX="165.0" layoutY="23.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="41.0">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </RadioButton>
+   </children>
+</fx:root>

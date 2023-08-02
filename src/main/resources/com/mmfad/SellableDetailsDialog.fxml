@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+<DialogPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mmfad.controllers.DetailsDialogController">
+   <content>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <ImageView fx:id="iconImageView" fitHeight="220.0" fitWidth="220.0" layoutX="52.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="itemNameLabel" alignment="CENTER" layoutX="79.0" layoutY="20.0" prefHeight="38.0" prefWidth="165.0" text="Item Name" textAlignment="CENTER" />
+            <Label fx:id="itemPriceLabel" alignment="CENTER" layoutX="79.0" layoutY="78.0" prefHeight="38.0" prefWidth="165.0" text="Item Price" textAlignment="CENTER" />
+            <FlowPane fx:id="detailsFlowPane" layoutX="300.0" layoutY="12.0" orientation="VERTICAL" prefHeight="382.0" prefWidth="286.0" />
+         </children>
+      </AnchorPane>
+   </content>
+   <buttonTypes>
+      <ButtonType fx:constant="CANCEL" />
+      <ButtonType fx:constant="OK" />
+   </buttonTypes>
+</DialogPane>
