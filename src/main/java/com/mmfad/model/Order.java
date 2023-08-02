@@ -1,32 +1,18 @@
-package com.mmfad;
+package com.mmfad.model;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
+
+
+    // SINGLETON/OBJECT FUNCTIONALITY
     private static Order orderInstance = null;
-
-    List<Sellable> itemsInOrder;
-    BigDecimal totalPrice;
-
     private Order() {
         itemsInOrder = new ArrayList<>();
         totalPrice = new BigDecimal("0.00");
     }
-
-    public void UpdateOrderPrice() {
-        totalPrice = new BigDecimal("0.00");
-        for (Sellable item:
-             itemsInOrder) {
-            totalPrice = totalPrice.add(item.price);
-        }
-    }
-
-    public BigDecimal getTotalPrice() {
-        return totalPrice;
-    }
-
     public static synchronized Order getInstance() {
         if(orderInstance == null)
             orderInstance = new Order();
@@ -38,14 +24,35 @@ public class Order {
     }
 
 
+    // ORDER LOGIC METHODS & VARIABLES
+    List<Sellable> itemsInOrder;
+    BigDecimal totalPrice;
+
+    private void UpdateOrderPrice() {
+        totalPrice = new BigDecimal("0.00");
+        for (Sellable item:
+             itemsInOrder) {
+            totalPrice = totalPrice.add(item.price);
+        }
+    }
+    public BigDecimal getTotalPrice() {
+        UpdateOrderPrice();
+        return totalPrice;
+    }
     public void addItemToOrder(Sellable item) {
         itemsInOrder.add(item);
     }
-
+    public List<Sellable> getItemsInOrder() {
+        return itemsInOrder;
+    }
     public void removeItemFromOrder(Sellable item) {
         itemsInOrder.remove(item);
     }
 
+
+
+    // DEBUG METHODS
+    // Right now contain simple ways to represent receipts and tickets
     public void DebugPrintReceipt() {
         System.out.println("------------------");
         System.out.println("Receipt for order");

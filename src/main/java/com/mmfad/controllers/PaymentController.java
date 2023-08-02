@@ -1,5 +1,9 @@
-package com.mmfad;
+package com.mmfad.controllers;
 
+import com.mmfad.GUI.Helper;
+import com.mmfad.Main;
+import com.mmfad.model.Order;
+import com.mmfad.model.Sellable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +19,9 @@ import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PaymentController extends OrderScene implements Initializable {
+public class PaymentController extends OrderSceneController implements Initializable {
+
+    // GUI components
     @FXML
     AnchorPane parentPane;
     @FXML
@@ -33,48 +39,40 @@ public class PaymentController extends OrderScene implements Initializable {
    @FXML
     Button deleteCashButton;
 
-    public void SwitchToMenuScene(ActionEvent event) throws IOException {
-        Node node = (Node) event.getSource();
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MenuScene.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.setScene(scene);
-    }
-
-    @Override
+   // INITIALIZATION FUNCTIONS
+   @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RefreshCurrentlySelectedItemsView();
         Helper.setCellFactoryListView(selectedItemsListView);
-
         UpdatePaymentLabels();
     }
-
     public void RefreshCurrentlySelectedItemsView(){
         selectedItemsListView.getItems().clear();
         for (Sellable item:
-                Order.getInstance().itemsInOrder) {
+                Order.getInstance().getItemsInOrder()) {
             selectedItemsListView.getItems().add(item);
         }
-        Order.getInstance().UpdateOrderPrice();
     }
 
-
+    // GUI CONTROL FUNCTIONS
     private void UpdatePaymentLabels() {
         orderTotalLabel.setText(Order.getInstance().getTotalPrice().toString());
         totalTenderedLabel.setText(totalTendered.toString());
         paymentDueLabel.setText(GetTotalDue().toString());
     }
+    private BigDecimal GetTotalDue() {
+        return Order.getInstance().getTotalPrice().subtract(totalTendered);
+    }
 
-    // TOTAL TENDERED LIST AND CONTROLS
     BigDecimal totalTendered = new BigDecimal("0.00");
     private void AddTenderedMoneyToListView(BigDecimal input) {
         cashTenderedListView.getItems().add(input);
     }
-
     public void RemoveTenderedMoneyFromListView() {
         cashTenderedListView.getItems().remove(cashTenderedListView.getSelectionModel().getSelectedItem());
+        UpdateTotalTenderedFromListView();
+        UpdatePaymentLabels();
     }
-
     private void UpdateTotalTenderedFromListView() {
         // update the totalTendered Variable using the list of tendered payments
         totalTendered = new BigDecimal("0.00");
@@ -83,12 +81,6 @@ public class PaymentController extends OrderScene implements Initializable {
             totalTendered = totalTendered.add(item);
         }
     }
-
-    private BigDecimal GetTotalDue() {
-        return Order.getInstance().getTotalPrice().subtract(totalTendered);
-    }
-
-
 
     // PAYMENT METHODS
     public void TenderCash(BigDecimal input) {
@@ -107,10 +99,9 @@ public class PaymentController extends OrderScene implements Initializable {
             // If totalDue is over zero do nothing
             System.out.println("Not paid in total");
         } else {
-            // else display the change required and then endOrder
+            // else display the change required and pas control to the ChangeRequiredPOPUP
             System.out.println("Order paid in full. Change required: " + GetTotalDue());
             ChangeRequiredPopup();
-//            FinishOrder();
         }
 
         System.out.println("PostInput");
@@ -134,8 +125,14 @@ public class PaymentController extends OrderScene implements Initializable {
         TenderCash(GetTotalDue());
     }
     public void CardPayment() {
-        // IDK how to handle card stuff now il just write it as if the payment went through.
+        //TODO: IDK how to handle card stuff now il just write it as if the payment went through.
         TenderCash(GetTotalDue());
+    }
+    private void ChangeRequiredPopup() {
+        Alert changeDueAlert = new Alert(Alert.AlertType.NONE,"Change due: " + GetTotalDue(), ButtonType.OK);
+        changeDueAlert.setOnCloseRequest(dialogEvent -> FinishOrder());
+        changeDueAlert.getDialogPane().setStyle("-fx-font-size: 24; -fx-border-width: 4; -fx-border-color: black");
+        changeDueAlert.show();
     }
 
     // KEYBOARD CONTROLLER
@@ -147,15 +144,16 @@ public class PaymentController extends OrderScene implements Initializable {
         customPaymentLabel.setText("");
     }
 
-    private void ChangeRequiredPopup() {
-        Alert changeDueAlert = new Alert(Alert.AlertType.NONE,"Change due: " + GetTotalDue(), ButtonType.OK);
-        changeDueAlert.setOnCloseRequest(dialogEvent -> FinishOrder());
-        changeDueAlert.getDialogPane().setStyle("-fx-font-size: 24; -fx-border-width: 4; -fx-border-color: black");
-        changeDueAlert.show();
+
+
+    // Order & Scene Control
+    public void SwitchToMenuScene(ActionEvent event) throws IOException {
+        Node node = (Node) event.getSource();
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MenuScene.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.setScene(scene);
     }
-
-
-
     private void FinishOrder() {
         Order.getInstance().DebugPrintReceipt();
         Order.getInstance().DebugPrintTickets();

@@ -1,4 +1,4 @@
-package com.mmfad;
+package com.mmfad.model;
 
 public class Food extends Sellable {
 
