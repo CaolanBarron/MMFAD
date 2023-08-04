@@ -4,32 +4,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-
-<fx:root type="AnchorPane" prefHeight="274.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="80.0" prefWidth="140.0" type="AnchorPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="247.0" layoutY="14.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="56.0">
-         <graphic>
-            <Polygon points="-9.999977111816406, 40.00001525878906, 12.399993896484375, 40.00001525878906, 0.39998626708984375, 16.800003051757812" stroke="BLACK" strokeType="INSIDE" />
-         </graphic>
-      </Button>
-      <Button layoutX="247.0" layoutY="202.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="56.0" rotate="-180.0">
-         <graphic>
-            <Polygon points="-9.999977111816406, 40.00001525878906, 12.399993896484375, 40.00001525878906, 0.39998626708984375, 16.800003051757812" stroke="BLACK" strokeType="INSIDE" />
-         </graphic>
-      </Button>
-      <Circle fill="WHITE" layoutX="275.0" layoutY="137.0" radius="70.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label alignment="CENTER" layoutX="239.0" layoutY="76.0" prefHeight="121.0" prefWidth="72.0" text="0">
+      <Button layoutX="5.0" layoutY="40.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" rotate="-180.0" translateX="100.0" />
+      <Button layoutX="5.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" translateX="100.0" />
+      <Circle fill="WHITE" layoutX="20.0" layoutY="40.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" translateX="100.0" />
+      <Label alignment="CENTER" layoutY="20.0" prefHeight="40.0" prefWidth="40.0" text="0" translateX="100.0">
          <font>
-            <Font size="64.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="29.0" layoutY="108.0" prefHeight="58.0" prefWidth="176.0" text="Detail">
-         <font>
-            <Font size="48.0" />
-         </font>
-      </Label>
+      <Label alignment="CENTER" layoutY="-1.0" prefHeight="80.0" prefWidth="101.0" text="Detail" />
    </children>
 </fx:root>
