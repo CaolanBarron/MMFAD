@@ -1,31 +1,32 @@
 package com.mmfad.controllers;
 
-import com.mmfad.GUI.BooleanDetailComponent;
-import com.mmfad.GUI.NumericalDetailComponent;
-import com.mmfad.GUI.SelectionDetailComponent;
-import com.mmfad.GUI.ToggleDetailComponent;
+import com.mmfad.model.Sellable;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DetailsDialogController implements Initializable {
+
+    Sellable item;
+
     @FXML
     FlowPane detailsFlowPane;
 
+    public DetailsDialogController(Sellable item) {
+        this.item = item;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        var component1 = new NumericalDetailComponent();
-        var component2 = new BooleanDetailComponent();
-        var component3 = new ToggleDetailComponent();
-        var component4 = new SelectionDetailComponent();
-        detailsFlowPane.getChildren().add(component1);
-        detailsFlowPane.getChildren().add(component2);
-        detailsFlowPane.getChildren().add(component3);
-        detailsFlowPane.getChildren().add(component4);
+        for (AnchorPane pane:
+             item.DisplayOptions()) {
+            detailsFlowPane.getChildren().add(pane);
+            detailsFlowPane.getChildren().add(new Separator());
+        }
     }
 }

@@ -1,7 +1,10 @@
 package com.mmfad.model;
 
+import javafx.scene.layout.AnchorPane;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.List;
 
 public abstract class Sellable {
     // GENERIC FUNCTIONS AND VARIABLES
@@ -16,5 +19,5 @@ public abstract class Sellable {
 
     // SELLABLE ITEM FUNCTIONALITY
     // This will contain functions and variables related to the item itself which will be displayed on the GUI
-    abstract void DisplayOptions();
+    public abstract List<AnchorPane> DisplayOptions();
 }
