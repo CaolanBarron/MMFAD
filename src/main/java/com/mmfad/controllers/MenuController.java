@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
@@ -61,6 +62,10 @@ public class MenuController extends OrderSceneController implements Initializabl
             foodItemButtons.add(new SellableButton(food));
         }
 
+        initializeButtonBehaviours(drinkItemButtons);
+
+        initializeButtonBehaviours(foodItemButtons);
+
         drinksPane.getChildren().addAll(drinkItemButtons);
         foodPane.getChildren().addAll(foodItemButtons);
         //Drinks pane visible and intractable by default
@@ -69,15 +74,37 @@ public class MenuController extends OrderSceneController implements Initializabl
         foodPane.setDisable(true);
 
 
-        for (SellableButton button:
-                foodItemButtons) {
-            button.setOnAction(addToOrderEvent);
-        }
-        for (SellableButton button:
-                drinkItemButtons) {
-            button.setOnAction(addToOrderEvent);
-        }
+
         Helper.setCellFactoryListView(selectedItemsListView);
+
+    }
+
+    public void initializeButtonBehaviours(List<SellableButton> itemButtons) {
+        for (SellableButton itemButton:
+                itemButtons) {
+             itemButton.addEventHandler(MouseEvent.ANY, new EventHandler<>() {
+                 long startTime;
+
+                 @Override
+                 public void handle(MouseEvent mouseEvent) {
+                     if (mouseEvent.getEventType().equals(MouseEvent.MOUSE_PRESSED)) {
+                         startTime = System.currentTimeMillis();
+                     } else if (mouseEvent.getEventType().equals(MouseEvent.MOUSE_RELEASED)) {
+                         if (System.currentTimeMillis() - startTime > 600) {
+                             System.out.println(System.currentTimeMillis() - startTime);
+                             Sellable item = itemButton.HeldDown();
+                             System.out.println("hit");
+                             if (item != null)
+                                 Order.getInstance().addItemToOrder(item);
+                             RefreshCurrentlySelectedItemsView();
+                         } else {
+                             Order.getInstance().addItemToOrder(itemButton.getSellableItem());
+                             RefreshCurrentlySelectedItemsView();
+                         }
+                     }
+                 }
+             });
+        }
     }
 
     // SCENE & PANE SWITCHING FUNCTIONS
@@ -120,11 +147,7 @@ public class MenuController extends OrderSceneController implements Initializabl
         orderTotalPrice.setText(Order.getInstance().getTotalPrice().toString());
     }
 
-    EventHandler<ActionEvent> addToOrderEvent = event -> {
-        SellableButton source = (SellableButton) event.getSource();
-        Order.getInstance().addItemToOrder(source.getSellableItem());
-        RefreshCurrentlySelectedItemsView();
-    };
+
 
     public void DeleteFromOrder(){
         Sellable item = selectedItemsListView.getSelectionModel().getSelectedItem();

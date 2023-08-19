@@ -21,7 +21,7 @@ public class Helper {
                 if (empty || item == null || item.name == null || item.price == null) {
                     setText(null);
                 } else {
-                    setText(item.name + "\n" + item.price);
+                    setText(item.DisplayItemOptions());
                 }
             }
         });
@@ -32,15 +32,15 @@ public class Helper {
     // DEBUG data for drinks and food
     // TODO: This should be removed and replaced with a database or read from file solution
     public static Drink[] drinks = {
-            new Drink("Americano", 4.55f),
-            new Drink("Cappuccino", 5.75f),
-            new Drink("Latte", 5.75f),
-            new Drink("Mocha", 6.25f),
-            new Drink("White Mocha", 6.25f),
-            new Drink("Cold Brew", 5.75f),
-            new Drink("Black Tea", 2.70f),
-            new Drink("Hibiscus Tea", 2.90f),
-            new Drink("Earl Grey Tea", 3.00f),
+            new Drink("Americano", 4.55f,false, 3, false),
+            new Drink("Cappuccino", 5.75f,false, 2, false),
+            new Drink("Latte", 5.75f,false,2, false),
+            new Drink("Mocha", 6.25f,false,2,true ),
+            new Drink("White Mocha", 6.25f,false,2, true),
+            new Drink("Cold Brew", 5.75f,true, 0, false),
+            new Drink("Black Tea", 2.70f, false, 0, false),
+            new Drink("Hibiscus Tea", 2.90f, false, 0, false),
+            new Drink("Earl Grey Tea", 3.00f, false, 0, false),
     };
     public static Food[] food = {
             new Food("Sandwich", 5.50f),

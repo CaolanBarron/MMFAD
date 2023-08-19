@@ -129,7 +129,7 @@ public class PaymentController extends OrderSceneController implements Initializ
         TenderCash(GetTotalDue());
     }
     private void ChangeRequiredPopup() {
-        Alert changeDueAlert = new Alert(Alert.AlertType.NONE,"Change due: " + GetTotalDue(), ButtonType.OK);
+        Alert changeDueAlert = new Alert(Alert.AlertType.NONE,"Change due: " + GetTotalDue().abs(), ButtonType.OK);
         changeDueAlert.setOnCloseRequest(dialogEvent -> FinishOrder());
         changeDueAlert.getDialogPane().setStyle("-fx-font-size: 24; -fx-border-width: 4; -fx-border-color: black");
         changeDueAlert.show();
@@ -143,8 +143,6 @@ public class PaymentController extends OrderSceneController implements Initializ
     public void BackspaceText(){
         customPaymentLabel.setText("");
     }
-
-
 
     // Order & Scene Control
     public void SwitchToMenuScene(ActionEvent event) throws IOException {

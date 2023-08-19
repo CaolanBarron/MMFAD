@@ -25,7 +25,7 @@ public class Order {
 
 
     // ORDER LOGIC METHODS & VARIABLES
-    List<Sellable> itemsInOrder;
+    public List<Sellable> itemsInOrder;
     BigDecimal totalPrice;
 
     private void UpdateOrderPrice() {
@@ -58,7 +58,7 @@ public class Order {
         System.out.println("Receipt for order");
         for (Sellable item:
              itemsInOrder) {
-            System.out.println(item.name + "\t" + item.price);
+            System.out.println(item.DisplayItemOptions());
             System.out.println();
         }
         System.out.println("Total price: " + orderInstance.getTotalPrice());
@@ -70,10 +70,10 @@ public class Order {
         System.out.println("Tickets for order");
         for (Sellable item:
                 itemsInOrder) {
-            System.out.println("------------------");
-            System.out.println(item.name + "\n" + item.price);
+            System.out.println(item.DisplayItemOptions());
         }
         System.out.println("------------------");
 
     }
+
 }

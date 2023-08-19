@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root prefHeight="80.0" prefWidth="140.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="decrementButton" layoutX="5.0" layoutY="40.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" rotate="-180.0" translateX="100.0" />
+      <Button fx:id="incrementButton" layoutX="5.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" translateX="100.0" />
+      <Circle fill="WHITE" layoutX="20.0" layoutY="40.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" translateX="100.0" />
+      <Label fx:id="numericalCounterLabel" alignment="CENTER" layoutY="20.0" prefHeight="40.0" prefWidth="40.0" text="0" translateX="100.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="detailNameLabel" alignment="CENTER" layoutY="-1.0" prefHeight="80.0" prefWidth="101.0" text="Detail" />
+   </children>
+</fx:root>
