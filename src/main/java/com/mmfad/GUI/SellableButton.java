@@ -1,5 +1,6 @@
 package com.mmfad.GUI;
 
+import com.mmfad.Main;
 import com.mmfad.controllers.DetailsDialogController;
 import com.mmfad.model.Sellable;
 import javafx.fxml.FXMLLoader;
@@ -18,8 +19,9 @@ public class SellableButton extends Button {
     public SellableButton(Sellable item) {
         super(item.name);
         this.item = item;
+        this.getStyleClass().add("sellable-button");
         //TODO: This should be handled in an external stylesheet probably
-        this.setStyle("-fx-min-height: 100; -fx-min-width: 200");
+//        this.setStyle("-fx-min-height: 100; -fx-min-width: 200");
 
 
     }
@@ -42,11 +44,12 @@ public class SellableButton extends Button {
             DetailsDialogController popupController = new DetailsDialogController(clonedItem);
             loader.setController(popupController);
             DialogPane pane = loader.load();
+            pane.getStylesheets().add(String.valueOf(Main.class.getResource("Styles/detailsDialog.css")));
 
             Dialog<ButtonType> dialog = new Dialog<>();
             dialog.setDialogPane(pane);
             // TODO Remove following line and control with CSS stylesheet
-            pane.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1))));
+//            pane.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1))));
 
             Optional<ButtonType> buttonResult = dialog.showAndWait();
 

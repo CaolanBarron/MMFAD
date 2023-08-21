@@ -1,0 +1,125 @@
+*{
+    /*-fx-text: #ecf3f9;*/
+    /*-fx-back: #0f151a;*/
+    /*-fx-primary: #585eca;*/
+    /*-fx-secondary: #221136;*/
+    /*-fx-accent: #844dc7;*/
+
+
+    -fx-text: #dfe6ec;
+    -fx-back: #0f151a;
+    -fx-primary: #7d4a66;
+    -fx-secondary: #11181d;
+    -fx-accent: #809d5c;
+
+
+    /*-fx-background-color: -fx-back;*/
+    /*-fx-font-family: "Classic Console";*/
+    -fx-font-size: 25px;
+    -fx-text-fill: -fx-text;
+}
+
+.dialog-pane {
+    -fx-background-color: -fx-back;
+    -fx-font-size: 25px;
+}
+
+.button{
+    -fx-background-color: -fx-primary;
+    /*-fx-min-height: 100;*/
+    /*-fx-min-width: 100;*/
+}
+
+.label{
+
+}
+#parentPane{
+    -fx-background-color: -fx-back;
+    -fx-border-style: solid;
+    -fx-border-width: 5px;
+    -fx-border-color: -fx-accent;
+}
+#foodPane{
+    -fx-background-color: -fx-back;
+}
+#drinksPane{
+    -fx-background-color: -fx-back;
+}
+
+#paneToolbar {
+    -fx-background-color: -fx-back;
+}
+#toolbarBG, #listviewBG, #paymentListViewBG, #cashTenderedBG, #paymentKeyboardBG, #paymentKeyboardBG1{
+    -fx-background-color: -fx-text;
+    -fx-opacity: 3%;
+}
+
+
+.list-view {
+    -fx-background-color: -fx-back;
+    -fx-control-inner-background: -fx-back;
+}
+.list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-border-style: solid hidden hidden hidden;
+    -fx-border-color: -fx-accent;
+}
+
+.list-view .list-cell:selected {
+     -fx-background-color: -fx-accent;
+ }
+
+.sellable-button{
+    -fx-padding: 20px;
+    -fx-min-width: 300px;
+    -fx-min-height: 150px;
+}
+
+.flow-tile {
+    -fx-padding: 10.0, 3.0, 5,0, 0,0;
+    -fx-hgap: 6;
+    -fx-vgap: 6;
+}
+
+
+
+.scroll-bar {
+    -fx-background-color: -fx-back;
+}
+.scroll-bar:vertical {
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+    -fx-shape: null;
+}
+.scroll-bar:vertical .increment-button, .scrollbar:vertical .decrement-button{
+   -fx-padding: 0;
+}
+.scroll-bar:vertical .thumb {
+    -fx-background-radius: 2px;
+    -fx-border-radius: 2px;
+    -fx-min-width: 10px;
+    -fx-tab-max-width: 10px;
+}
+
+.scroll-bar:horizontal{
+    -fx-padding: 0 0 1 0;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: -fx-secondary;
+    -fx-max-width: 5px;
+    -fx-background-insets: 0,1,2;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: -fx-accent;
+    -fx-opacity: 50%;
+}
+.scroll-bar .thumb:pressed {
+    -fx-background-color: -fx-accent;
+    -fx-opacity: 100%;
+}

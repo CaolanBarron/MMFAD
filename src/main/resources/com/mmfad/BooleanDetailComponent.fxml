@@ -2,16 +2,17 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root prefHeight="45.0" prefWidth="140.0" type="AnchorPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+<fx:root type="FlowPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <RadioButton fx:id="booleanRadioButton" layoutX="100.0" layoutY="1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0">
+      <Label fx:id="detailNameLabel" alignment="CENTER" prefHeight="40.0" text="Detail" />
+      <RadioButton fx:id="booleanRadioButton" mnemonicParsing="false">
          <font>
             <Font size="29.0" />
          </font>
       </RadioButton>
-      <Label fx:id="detailNameLabel" alignment="CENTER" prefHeight="43.0" prefWidth="100.0" text="Detail" />
    </children>
 </fx:root>

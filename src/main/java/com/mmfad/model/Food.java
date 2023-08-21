@@ -2,7 +2,7 @@ package com.mmfad.model;
 
 import com.mmfad.GUI.BooleanDetailComponent;
 import com.mmfad.GUI.SelectionDetailComponent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +23,8 @@ public class Food extends Sellable {
     }
 
     @Override
-    public List<AnchorPane> GetItemOptions() {
-        List<AnchorPane> components = new ArrayList<>();
+    public List<Pane> GetItemOptions() {
+        List<Pane> components = new ArrayList<>();
 
         // Boolean detail component for warmed
         components.add(new BooleanDetailComponent<>("Warmed", this, Food::isWarmed, Food::setWarmed));

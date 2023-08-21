@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
-public class ToggleDetailComponent<T> extends AnchorPane {
+public class ToggleDetailComponent<T> extends FlowPane {
     private T target;
     private Function<T, String> getter;
     private BiConsumer<T, String> setter;
@@ -71,7 +71,12 @@ public class ToggleDetailComponent<T> extends AnchorPane {
             rb.setToggleGroup(tg);
             rb.setUserData(value);
 
+            rb.getStyleClass().add("radio-button");
             contentAreaFlowPane.getChildren().add(rb);
         }
+
+        //Style components
+
+
     }
 }

@@ -6,15 +6,18 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Rectangle?>
 
-<DialogPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<DialogPane fx:id="detailsParentPane" prefHeight="596.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1030.0">
          <children>
             <ImageView fx:id="iconImageView" fitHeight="220.0" fitWidth="220.0" layoutX="14.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="itemNameLabel" alignment="CENTER" layoutX="41.0" layoutY="22.0" prefHeight="38.0" prefWidth="165.0" text="Item Name" textAlignment="CENTER" />
-            <Label fx:id="itemPriceLabel" alignment="CENTER" layoutX="41.0" layoutY="80.0" prefHeight="38.0" prefWidth="165.0" text="Item Price" textAlignment="CENTER" />
-            <FlowPane fx:id="detailsFlowPane" layoutX="242.0" layoutY="9.0" orientation="VERTICAL" prefHeight="380.0" prefWidth="350.0" />
+            <Label fx:id="itemNameLabel" alignment="CENTER" layoutX="41.0" layoutY="230.0" prefHeight="38.0" prefWidth="165.0" text="Item Name" textAlignment="CENTER" />
+            <Label fx:id="itemPriceLabel" alignment="CENTER" layoutX="41.0" layoutY="270.0" prefHeight="38.0" prefWidth="165.0" text="Item Price" textAlignment="CENTER" />
+            <FlowPane fx:id="detailsFlowPane" layoutX="242.0" layoutY="9.0" orientation="VERTICAL" prefHeight="586.0" prefWidth="770.0" />
+            <Rectangle fx:id="detailsBG" arcHeight="5.0" arcWidth="5.0" disable="true" fill="DODGERBLUE" height="585.0" layoutX="244.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" width="775.0" />
+            <Rectangle fx:id="drinkDetailsBG" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="586.0" layoutX="8.0" layoutY="9.0" stroke="BLACK" strokeType="INSIDE" width="227.0" />
          </children>
       </AnchorPane>
    </content>

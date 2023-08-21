@@ -6,40 +6,34 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="parentPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mmfad.controllers.MenuController">
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="720.0" prefWidth="240.0">
-        <ListView fx:id="selectedItemsListView" layoutX="2.0" prefHeight="542.0" prefWidth="240.0"/>
-        <Label alignment="CENTER" layoutY="542.0" prefHeight="26.0" prefWidth="240.0" text="Total"/>
-        <Label fx:id="orderTotalPrice" alignment="CENTER" layoutX="2.0" layoutY="568.0" prefHeight="26.0"
-               prefWidth="240.0" text="0.0"/>
-        <Button layoutX="11.0" layoutY="594.0" mnemonicParsing="false"
-                onAction="#DeleteFromOrder" prefHeight="51.0" prefWidth="218.0" text="Delete Item"/>
-        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="655.0"
-                mnemonicParsing="false" onAction="#SwitchToPaymentScene" prefHeight="51.0" prefWidth="99.0"
-                text="Pay"/>
-        <Button layoutX="14.0" layoutY="655.0" mnemonicParsing="false" onAction="#CancelOrder" prefHeight="51.0"
-                prefWidth="99.0" text="Cancel"/>
+<AnchorPane fx:id="parentPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mmfad.controllers.MenuController">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="720.0" prefWidth="286.0">
+        <ListView fx:id="selectedItemsListView" layoutX="9.0" layoutY="13.0" prefHeight="514.0" prefWidth="272.0" />
+        <Label alignment="CENTER" layoutY="527.0" prefHeight="26.0" prefWidth="286.0" text="Total" />
+        <Label fx:id="orderTotalPrice" alignment="CENTER" layoutX="1.0" layoutY="560.0" prefHeight="26.0" prefWidth="286.0" text="0.0" />
+        <Button layoutX="35.0" layoutY="594.0" mnemonicParsing="false" onAction="#DeleteFromOrder" prefHeight="51.0" prefWidth="218.0" text="Delete Item" />
+        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="156.0" layoutY="655.0" mnemonicParsing="false" onAction="#SwitchToPaymentScene" prefHeight="51.0" prefWidth="115.0" text="Pay" />
+        <Button layoutX="14.0" layoutY="655.0" mnemonicParsing="false" onAction="#CancelOrder" prefHeight="51.0" prefWidth="115.0" text="Cancel" />
+      <Rectangle fx:id="listviewBG" arcHeight="5.0" arcWidth="5.0" disable="true" fill="#3c8cd1" height="514.0" layoutX="6.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 3%;" width="272.0" />
     </AnchorPane>
-    <AnchorPane layoutX="243.0" minHeight="0.0" minWidth="0.0" prefHeight="720.0" prefWidth="1040.0">
-        <ToolBar layoutX="1.0" layoutY="-3.0" prefHeight="103.0" prefWidth="1040.0">
-            <Button fx:id="drinksButton" mnemonicParsing="false" onAction="#SwitchToDrinksPane"
-                    prefHeight="70.0" prefWidth="141.0" text="Drinks">
+    <AnchorPane layoutX="283.0" minHeight="0.0" minWidth="0.0" prefHeight="720.0" prefWidth="1000.0">
+        <ToolBar fx:id="paneToolbar" layoutX="1.0" layoutY="12.0" prefHeight="88.0" prefWidth="1040.0">
+            <Button fx:id="drinksButton" mnemonicParsing="false" onAction="#SwitchToDrinksPane" prefHeight="70.0" prefWidth="141.0" text="Drinks">
                 <font>
-                    <Font size="24.0"/>
+                    <Font size="24.0" />
                 </font>
             </Button>
-            <Button fx:id="foodButton" mnemonicParsing="false" onAction="#SwitchToFoodPane" prefHeight="70.0"
-                    prefWidth="131.0" text="Food">
+            <Button fx:id="foodButton" mnemonicParsing="false" onAction="#SwitchToFoodPane" prefHeight="70.0" prefWidth="131.0" text="Food">
                 <font>
-                    <Font size="24.0"/>
+                    <Font size="24.0" />
                 </font>
             </Button>
         </ToolBar>
-        <FlowPane fx:id="foodPane" disable="true" layoutX="1.0" layoutY="102.0" prefHeight="616.0"
-                  prefWidth="1040.0" visible="false"/>
-        <FlowPane fx:id="drinksPane" layoutX="3.0" layoutY="102.0" prefHeight="616.0" prefWidth="1040.0"/>
+        <FlowPane fx:id="foodPane" disable="true" layoutX="1.0" layoutY="102.0" prefHeight="616.0" prefWidth="1040.0" visible="false" />
+        <FlowPane fx:id="drinksPane" layoutX="3.0" layoutY="102.0" prefHeight="616.0" prefWidth="1040.0" />
+      <Rectangle fx:id="toolbarBG" arcHeight="5.0" arcWidth="5.0" disable="true" fill="#7f8a94" height="97.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 3%;" width="1033.0" />
     </AnchorPane>
 </AnchorPane>

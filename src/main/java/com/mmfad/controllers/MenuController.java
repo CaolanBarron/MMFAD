@@ -55,7 +55,8 @@ public class MenuController extends OrderSceneController implements Initializabl
         // TODO: Will need to initialize these lists when reading from file/database
         for (Sellable drink :
                 Helper.drinks) {
-            drinkItemButtons.add(new SellableButton(drink));
+            SellableButton button = new SellableButton(drink);
+            drinkItemButtons.add(button);
         }
         for (Sellable food :
                 Helper.food) {
@@ -76,6 +77,10 @@ public class MenuController extends OrderSceneController implements Initializabl
 
 
         Helper.setCellFactoryListView(selectedItemsListView);
+
+        // Style initialization
+        drinksPane.getStyleClass().add("flow-tile");
+        foodPane.getStyleClass().add("flow-tile");
 
     }
 
@@ -128,6 +133,7 @@ public class MenuController extends OrderSceneController implements Initializabl
         Node node = (Node) event.getSource();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("PaymentScene.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(String.valueOf(Main.class.getResource("Styles/style.css")));
         Stage stage = (Stage) node.getScene().getWindow();
         System.out.println("Switching to payment scene");
         stage.setScene(scene);

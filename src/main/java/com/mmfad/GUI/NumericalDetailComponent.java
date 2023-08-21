@@ -6,13 +6,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
-public class NumericalDetailComponent<T> extends AnchorPane {
+public class NumericalDetailComponent<T> extends FlowPane {
     private T target;
     private Function<T, Integer> getter;
     private BiConsumer<T, Integer> setter;
@@ -68,6 +68,10 @@ public class NumericalDetailComponent<T> extends AnchorPane {
                 updateNumberLabel();
             }
         });
+
+        //Style components
+        incrementButton.getStyleClass().add("numerical-button");
+        decrementButton.getStyleClass().add("numerical-button");
     }
 
     private void updateNumberLabel() {

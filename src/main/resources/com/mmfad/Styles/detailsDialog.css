@@ -1,0 +1,62 @@
+
+
+*{
+    /*-fx-text: #ecf3f9;*/
+    /*-fx-back: #0f151a;*/
+    /*-fx-primary: #585eca;*/
+    /*-fx-secondary: #221136;*/
+    /*-fx-accent: #844dc7;    */
+
+    -fx-text: #dfe6ec;
+    -fx-back: #0f151a;
+    -fx-primary: #7d4a66;
+    -fx-secondary: #11181d;
+    -fx-accent: #809d5c;
+
+    -fx-font-size: 20px;
+    -fx-text-fill: -fx-text;
+}
+
+#detailsParentPane{
+    -fx-background-color: -fx-back;
+    -fx-border-style: solid;
+    -fx-border-width: 5px;
+    -fx-border-color: -fx-accent;
+}
+
+#numericalCounterBG {
+    -fx-fill: -fx-primary;
+}
+#incrementButton, #decrementButton {
+    -fx-background-color: -fx-accent;
+}
+.detailsFlowPane {
+    -fx-padding: 10px;
+    -fx-hgap: 20px;
+}
+.separator{
+    -fx-max-width: 550px;
+    -fx-background-color: -fx-accent;
+}
+#detailsBG, #drinkDetailsBG{
+    -fx-background-color: -fx-accent;
+    -fx-opacity: 3%;
+}
+.radio-button .radio{
+    -fx-background-color: -fx-primary;
+}
+.radio-button:selected .radio .dot {
+    -fx-background-color: -fx-accent;
+    -fx-background-insets: 0;
+
+}
+
+.toggle-button {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-text;
+}
+.toggle-button:selected {
+    -fx-background-color: -fx-accent;
+}
+
+

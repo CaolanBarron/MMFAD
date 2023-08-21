@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
@@ -14,7 +13,7 @@ import java.util.Arrays;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
-public class SelectionDetailComponent<T> extends AnchorPane {
+public class SelectionDetailComponent<T> extends FlowPane {
     private T target;
     private Function<T,String[]> getter;
     private BiConsumer<T, String[]> setter;
@@ -77,6 +76,9 @@ public class SelectionDetailComponent<T> extends AnchorPane {
             toggleButtons[i] = tb;
         }
         contentAreaFlowPane.getChildren().addAll(toggleButtons);
+
+        // Style Components
+
 
     }
 

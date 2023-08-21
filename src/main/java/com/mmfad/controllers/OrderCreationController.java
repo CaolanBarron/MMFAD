@@ -18,6 +18,7 @@ public class OrderCreationController {
         Node node = (Node) event.getSource();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MenuScene.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(String.valueOf(Main.class.getResource("Styles/style.css")));
         Stage stage = (Stage) node.getScene().getWindow();
         stage.setScene(scene);
     }

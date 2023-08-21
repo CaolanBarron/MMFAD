@@ -1,20 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-<fx:root prefHeight="80.0" prefWidth="140.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="45.0" prefHeight="45.0" prefWidth="400.0" type="FlowPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="decrementButton" layoutX="5.0" layoutY="40.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" rotate="-180.0" translateX="100.0" />
-      <Button fx:id="incrementButton" layoutX="5.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" translateX="100.0" />
-      <Circle fill="WHITE" layoutX="20.0" layoutY="40.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" translateX="100.0" />
-      <Label fx:id="numericalCounterLabel" alignment="CENTER" layoutY="20.0" prefHeight="40.0" prefWidth="40.0" text="0" translateX="100.0">
+      <Label fx:id="detailNameLabel" alignment="CENTER" maxHeight="60.0" prefHeight="60.0" text="Espresso Shots">
          <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="detailNameLabel" alignment="CENTER" layoutY="-1.0" prefHeight="80.0" prefWidth="101.0" text="Detail" />
+            <Font size="25.0" />
+         </font></Label>
+      <AnchorPane maxHeight="41.0" prefHeight="41.0" prefWidth="39.0">
+         <children>
+            <Button fx:id="decrementButton" layoutX="-95.0" layoutY="30.0" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" rotate="-180.0" style="-fx-font-size: 1;" translateX="100.0">
+               <font>
+                  <Font size="1.0" />
+               </font></Button>
+            <Button fx:id="incrementButton" layoutX="-95.0" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-font-size: 1;" translateX="100.0">
+               <font>
+                  <Font size="1.0" />
+               </font></Button>
+            <Circle fx:id="numericalCounterBG" fill="WHITE" layoutX="-80.0" layoutY="30.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" translateX="100.0" />
+            <Label fx:id="numericalCounterLabel" alignment="CENTER" layoutX="-100.0" layoutY="10.0" maxHeight="40.0" maxWidth="40.0" prefHeight="40.0" prefWidth="40.0" text="0" translateX="100.0">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </fx:root>

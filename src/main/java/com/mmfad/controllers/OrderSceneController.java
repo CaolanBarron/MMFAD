@@ -17,6 +17,7 @@ public class OrderSceneController {
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("OrderCreationScene.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(String.valueOf(Main.class.getResource("Styles/style.css")));
         parentPane.setScene(scene);
     }
 }

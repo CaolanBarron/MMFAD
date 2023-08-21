@@ -12,7 +12,9 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("OrderCreationScene.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(String.valueOf(Main.class.getResource("Styles/style.css")));
         stage.setScene(scene);
+
         stage.show();
     }
 

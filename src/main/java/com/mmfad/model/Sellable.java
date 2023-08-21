@@ -1,6 +1,6 @@
 package com.mmfad.model;
 
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -19,7 +19,7 @@ public abstract class Sellable implements Cloneable {
 
     // SELLABLE ITEM FUNCTIONALITY
     // This will contain functions and variables related to the item itself which will be displayed on the GUI
-    public abstract List<AnchorPane> GetItemOptions();
+    public abstract List<Pane> GetItemOptions();
 
     public abstract String DisplayItemOptions();
 

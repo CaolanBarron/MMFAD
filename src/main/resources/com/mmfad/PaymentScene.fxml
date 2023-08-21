@@ -6,155 +6,142 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="parentPane" onDragDetected="#BackspaceText" prefHeight="720.0" prefWidth="1280.0"
-            xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.mmfad.controllers.PaymentController">
-   <Button layoutX="145.0" layoutY="612.0" mnemonicParsing="false" onAction="#SwitchToMenuScene" prefHeight="58.0"
-           prefWidth="119.0" text="Back"/>
-   <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="10.0" layoutX="596.0" layoutY="127.0" prefHeight="445.0"
-             prefWidth="347.0" vgap="10.0">
-      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0"
-              prefWidth="100.0" text="1">
+<AnchorPane fx:id="parentPane" onDragDetected="#BackspaceText" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mmfad.controllers.PaymentController">
+   <Button layoutX="145.0" layoutY="600.0" mnemonicParsing="false" onAction="#SwitchToMenuScene" prefHeight="58.0" prefWidth="119.0" text="Back">
+      <font>
+         <Font size="25.0" />
+      </font></Button>
+   <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="10.0" layoutX="596.0" layoutY="127.0" prefHeight="445.0" prefWidth="347.0" vgap="10.0">
+      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0" prefWidth="100.0" text="1">
          <font>
-            <Font size="24.0"/>
+            <Font size="24.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0"
-              prefWidth="100.0" text="2">
+      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0" prefWidth="100.0" text="2">
          <font>
-            <Font size="24.0"/>
+            <Font size="24.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0"
-              prefWidth="100.0" text="3">
+      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0" prefWidth="100.0" text="3">
          <font>
-            <Font size="24.0"/>
+            <Font size="24.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0"
-              prefWidth="100.0" text="4">
+      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0" prefWidth="100.0" text="4">
          <font>
-            <Font size="24.0"/>
+            <Font size="24.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0"
-              prefWidth="100.0" text="5">
+      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0" prefWidth="100.0" text="5">
          <font>
-            <Font size="24.0"/>
+            <Font size="24.0" />
          </font>
          <opaqueInsets>
-            <Insets/>
+            <Insets />
          </opaqueInsets>
       </Button>
-      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0"
-              prefWidth="100.0" text="6">
+      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0" prefWidth="100.0" text="6">
          <font>
-            <Font size="24.0"/>
+            <Font size="24.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0"
-              prefWidth="100.0" text="7">
+      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0" prefWidth="100.0" text="7">
          <font>
-            <Font size="24.0"/>
+            <Font size="24.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0"
-              prefWidth="100.0" text="8">
+      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0" prefWidth="100.0" text="8">
          <font>
-            <Font size="24.0"/>
+            <Font size="24.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0"
-              prefWidth="100.0" text="9">
+      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0" prefWidth="100.0" text="9">
          <font>
-            <Font size="24.0"/>
+            <Font size="24.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0"
-              prefWidth="100.0" text=".">
+      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0" prefWidth="100.0" text=".">
          <font>
-            <Font size="24.0"/>
+            <Font size="24.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0"
-              prefWidth="100.0" text="0">
+      <Button mnemonicParsing="false" onAction="#KeyboardInput" prefHeight="100.0" prefWidth="100.0" text="0">
          <font>
-            <Font size="24.0"/>
+            <Font size="24.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#CustomPayment" prefHeight="100.0"
-              prefWidth="100.0" text="Cash">
+      <Button mnemonicParsing="false" onAction="#CustomPayment" prefHeight="100.0" prefWidth="100.0" text="Cash">
          <font>
-            <Font size="24.0"/>
+            <Font size="24.0" />
          </font>
       </Button>
    </FlowPane>
-   <ListView fx:id="selectedItemsListView" layoutX="95.0" layoutY="38.0" prefHeight="548.0" prefWidth="220.0"/>
-   <Label fx:id="customPaymentLabel" alignment="CENTER" layoutX="652.0" layoutY="67.0" prefHeight="50.0"
-          prefWidth="238.0" textFill="#141414">
+   <ListView fx:id="selectedItemsListView" layoutX="95.0" layoutY="38.0" prefHeight="548.0" prefWidth="220.0" />
+   <Label fx:id="customPaymentLabel" alignment="CENTER" layoutX="652.0" layoutY="67.0" prefHeight="50.0" prefWidth="238.0" textFill="#141414">
       <font>
-         <Font size="24.0"/>
+         <Font size="24.0" />
       </font>
    </Label>
-   <Label fx:id="paymentDueLabel" alignment="CENTER" layoutX="352.0" layoutY="402.0" prefHeight="30.0" prefWidth="114.0"
-          text="0.0">
+   <Label fx:id="paymentDueLabel" alignment="CENTER" layoutX="320.0" layoutY="410.0" prefHeight="30.0" prefWidth="180.0" text="0.0">
       <font>
-         <Font size="24.0"/>
+         <Font size="24.0" />
       </font>
    </Label>
-   <Label layoutX="339.0" layoutY="372.0" text="Payment due">
+   <Label alignment="CENTER" layoutX="320.0" layoutY="380.0" prefHeight="30.0" prefWidth="180.0" text="Payment due">
       <font>
-         <Font size="24.0"/>
+         <Font size="24.0" />
       </font>
    </Label>
-   <Button layoutX="670.0" layoutY="579.0" mnemonicParsing="false" onAction="#CardPayment"
-           prefHeight="100.0" prefWidth="100.0" text="Card">
+   <Button layoutX="670.0" layoutY="579.0" mnemonicParsing="false" onAction="#CardPayment" prefHeight="100.0" prefWidth="100.0" text="Card">
       <font>
-         <Font size="24.0"/>
+         <Font size="24.0" />
       </font>
    </Button>
-   <Button layoutX="771.0" layoutY="579.0" mnemonicParsing="false" onAction="#ExactPayment"
-           prefHeight="100.0" prefWidth="100.0" text="Exact">
+   <Button layoutX="771.0" layoutY="579.0" mnemonicParsing="false" onAction="#ExactPayment" prefHeight="100.0" prefWidth="100.0" text="Exact">
       <font>
-         <Font size="24.0"/>
+         <Font size="24.0" />
       </font>
    </Button>
-   <Button layoutX="950.0" layoutY="134.0" mnemonicParsing="false" onAction="#BackspaceText"
-           prefHeight="100.0" prefWidth="100.0" text="&lt;-">
+   <Button layoutX="950.0" layoutY="134.0" mnemonicParsing="false" onAction="#BackspaceText" prefHeight="100.0" prefWidth="100.0" text="&lt;-">
       <font>
-         <Font size="24.0"/>
+         <Font size="24.0" />
       </font>
    </Button>
-   <Label layoutX="330.0" layoutY="38.0" text="Cash Tendered">
+   <Label alignment="CENTER" layoutX="325.0" layoutY="38.0" prefHeight="30.0" prefWidth="174.0" text="Cash Tendered">
       <font>
-         <Font size="24.0"/>
+         <Font size="24.0" />
       </font>
    </Label>
-   <ListView fx:id="cashTenderedListView" layoutX="323.0" layoutY="68.0" prefHeight="137.0" prefWidth="174.0"/>
-   <Button fx:id="deleteCashButton" layoutX="383.0" layoutY="210.0" mnemonicParsing="false"
-           onAction="#RemoveTenderedMoneyFromListView" text="Delete"/>
-   <Label fx:id="orderTotalLabel" alignment="CENTER" layoutX="353.0" layoutY="288.0" prefHeight="30.0" prefWidth="114.0"
-          text="0.0">
+   <ListView fx:id="cashTenderedListView" layoutX="323.0" layoutY="68.0" prefHeight="137.0" prefWidth="174.0" />
+   <Button fx:id="deleteCashButton" layoutX="358.0" layoutY="211.0" mnemonicParsing="false" onAction="#RemoveTenderedMoneyFromListView" text="Delete">
       <font>
-         <Font size="24.0"/>
+         <Font size="25.0" />
+      </font></Button>
+   <Label fx:id="orderTotalLabel" alignment="CENTER" layoutX="320.0" layoutY="290.0" prefHeight="30.0" prefWidth="180.0" text="0.0">
+      <font>
+         <Font size="24.0" />
       </font>
    </Label>
-   <Label layoutX="353.0" layoutY="258.0" text="Order total">
+   <Label alignment="CENTER" layoutX="320.0" layoutY="260.0" prefHeight="30.0" prefWidth="180.0" text="Order total">
       <font>
-         <Font size="24.0"/>
+         <Font size="24.0" />
       </font>
    </Label>
-   <Label fx:id="totalTenderedLabel" alignment="CENTER" layoutX="353.0" layoutY="342.0" prefHeight="30.0"
-          prefWidth="114.0" text="0.0">
+   <Label fx:id="totalTenderedLabel" alignment="CENTER" layoutX="320.0" layoutY="350.0" prefHeight="30.0" prefWidth="180.0" text="0.0">
       <font>
-         <Font size="24.0"/>
+         <Font size="24.0" />
       </font>
    </Label>
-   <Label layoutX="333.0" layoutY="318.0" text="Total tendered">
+   <Label alignment="CENTER" layoutX="320.0" layoutY="320.0" prefHeight="30.0" prefWidth="180.0" text="Total tendered">
       <font>
-         <Font size="24.0"/>
+         <Font size="24.0" />
       </font>
    </Label>
+   <Rectangle fx:id="paymentListViewBG" arcHeight="5.0" arcWidth="5.0" disable="true" fill="DODGERBLUE" height="548.0" layoutX="93.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="220.0" />
+   <Rectangle fx:id="cashTenderedBG" arcHeight="5.0" arcWidth="5.0" disable="true" fill="DODGERBLUE" height="138.0" layoutX="324.0" layoutY="68.0" stroke="BLACK" strokeType="INSIDE" width="174.0" />
+   <Rectangle fx:id="paymentKeyboardBG" arcHeight="5.0" arcWidth="5.0" disable="true" fill="DODGERBLUE" height="580.0" layoutX="591.0" layoutY="116.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 4%;" width="355.0" />
+   <Rectangle fx:id="paymentKeyboardBG1" arcHeight="5.0" arcWidth="5.0" disable="true" fill="DODGERBLUE" height="138.0" layoutX="946.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 4%;" width="119.0" />
 </AnchorPane>

@@ -4,7 +4,7 @@ import com.mmfad.GUI.BooleanDetailComponent;
 import com.mmfad.GUI.NumericalDetailComponent;
 import com.mmfad.GUI.SelectionDetailComponent;
 import com.mmfad.GUI.ToggleDetailComponent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +38,8 @@ public class Drink extends Sellable {
     }
 
     @Override
-    public List<AnchorPane> GetItemOptions() {
-        List<AnchorPane> components = new ArrayList<>();
+    public List<Pane> GetItemOptions() {
+        List<Pane> components = new ArrayList<>();
 
         // Boolean Detail Component for Iced
         components.add((new BooleanDetailComponent<>("Iced", this, Drink::isIced, Drink::setIced)));
