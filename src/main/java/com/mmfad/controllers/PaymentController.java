@@ -132,7 +132,7 @@ public class PaymentController extends OrderSceneController implements Initializ
         Alert changeDueAlert = new Alert(Alert.AlertType.NONE,"Change due: " + GetTotalDue().abs(), ButtonType.OK);
 //        changeDueAlert.getDialogPane().getStylesheets().add(String.valueOf(Main.class.getResource("Style/style.css")));
         changeDueAlert.setOnCloseRequest(dialogEvent -> FinishOrder());
-        changeDueAlert.getDialogPane().setStyle("-fx-font-size: 35; -fx-border-width: 4; -fx-border-color: #844dc7;-fx-background-color: #0f151a;");
+        changeDueAlert.getDialogPane().setStyle("-fx-font-size: 35; -fx-border-width: 4; -fx-border-color: #809d5c;-fx-background-color: #0f151a;");
         changeDueAlert.getDialogPane().lookup(".content.label").setStyle("-fx-text-fill: #ecf3f9;");
         changeDueAlert.show();
     }

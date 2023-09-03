@@ -23,7 +23,7 @@ public class Drink extends Sellable {
     boolean whippedCream;
     String[] syrup = {"Caramel", "Vanilla", "Hazelnut"};
     String[] selectedSyrups = new String[syrup.length];
-    String[] other = {"Option1", "Option 2", "Option 3"};
+    String[] other = {"Sit-In", "Take-Away", "White sugar", "Brown sugar"};
     String[] selectedOther = new String[other.length];
 
     public Drink(String name, float price) {
